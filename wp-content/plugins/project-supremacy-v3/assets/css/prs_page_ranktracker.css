@@ -1,0 +1,91 @@
+.rankings-container{
+    margin-top: 10px;
+}
+.rankings-heading{
+    background: white;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 14px;
+    color: #666;
+    border-top: 1px solid;
+    border-left: 1px solid;
+    border-color: #e5e5e5;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    width: auto;
+    margin-left: 18px;
+}
+.rankings-body{
+    background: white;
+    padding: 25px 30px 25px 30px;
+}
+
+.uk-button-warning {
+    background-color: #d88c00;
+    color: #fff;
+    background-image: linear-gradient(to bottom, #f5aa00, #c57600);
+    border-color: rgba(0, 0, 0, .2);
+    border-bottom-color: rgba(0, 0, 0, .4);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+}
+.uk-button-warning:focus, .uk-button-warning:hover {
+    background-color: #d48d0b;
+    color: #ffffff;
+    outline: 0;
+    text-decoration: none;
+    background-image: none;
+}
+
+.term_type.nth {
+    background-position: -0px -66px;
+    width: 20px;
+    height: 20px;
+}
+.term_type.organic_term {
+    background-position: -0px -204px;
+    width: 15px;
+    height: 15px;
+}
+.term_type.na {
+    background-position: -0px -46px;
+    width: 20px;
+    height: 20px;
+}
+.term_type.local_organic {
+    background-position: -0px -159px;
+    width: 15px;
+    height: 15px;
+}
+.term_type.youtube {
+    background-position: -0px -219px;
+    width: 15px;
+    height: 15px;
+}
+.term_type.map_term {
+    background-position: -0px -174px;
+    width: 15px;
+    height: 15px;
+}
+.map_rank.no_let {
+    background-position: -18px -60px;
+    width: 18px;
+    height: 20px;
+}
+.term_type.pm {
+    background-position: -0px -125px;
+    width: 19px;
+    height: 19px;
+}
+.term_type.local_finder {
+    background-position: -0px -144px;
+    width: 15px;
+    height: 15px;
+}
+input[type=checkbox]:checked:before {
+    margin: -3px 0 0 -4px !important;
+}
+td.term {
+    font-size: 18px;
+    color: #065a4a;
+}
+
