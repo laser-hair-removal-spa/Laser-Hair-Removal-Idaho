@@ -1,0 +1,574 @@
+/*
+ * jquery.flowchart - CSS definitions
+ */
+
+.flowchart-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.flowchart-links-layer, .flowchart-operators-layer, .flowchart-temporary-link-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.flowchart-operators-layer, .flowchart-temporary-link-layer {
+    pointer-events: none;
+}
+
+.flowchart-temporary-link-layer {
+    display: none;
+}
+
+.flowchart-link, .flowchart-operator {
+    cursor: default;
+}
+
+.flowchart-operator-connector {
+    position: relative;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.flowchart-operator-connector-label {
+    font-size: small;
+}
+
+.flowchart-operator-inputs .flowchart-operator-connector-label {
+    margin-left: 14px;
+}
+
+.flowchart-operator-outputs .flowchart-operator-connector-label {
+    text-align: right;
+    margin-right: 5px;
+}
+
+.flowchart-operator-connector-arrow {
+    width: 0px;
+    height: 0px;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid rgb(204, 204, 204);
+    position: absolute;
+    top: 0px;
+}
+
+.flowchart-operator-connector-small-arrow {
+    width: 0px;
+    height: 0px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid transparent; /*rgb(100, 100, 100);*/
+    position: absolute;
+    top: 5px;
+    pointer-events: none;
+}
+
+.flowchart-operator-connector:hover .flowchart-operator-connector-arrow {
+    border-left: 10px solid rgb(153, 153, 153);
+}
+
+.flowchart-operator-inputs .flowchart-operator-connector-arrow {
+    left: -1px;
+}
+
+.flowchart-operator-outputs .flowchart-operator-connector-arrow {
+    right: -10px;
+}
+
+.flowchart-operator-inputs .flowchart-operator-connector-small-arrow {
+    left: -1px;
+}
+
+.flowchart-operator-outputs .flowchart-operator-connector-small-arrow {
+    right: -7px;
+}
+
+.unselectable {
+   -moz-user-select: none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+
+   /*
+     Introduced in IE 10.
+     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+   */
+   -ms-user-select: none;
+   user-select: none;
+}
+
+
+/* Default Operator */
+
+.flowchart-operator {
+    position: absolute;
+    min-width: 220px;
+    border: 1px solid #CCCCCC;
+    background: #FAFAFA;
+    pointer-events: auto;
+    width: auto !important;
+    border-radius: 0 10px 10px 0;
+}
+
+.flowchart-operator.hover {
+    border-color: #999;
+}
+
+.flowchart-operator.selected {
+    border-color: #555;
+}
+
+
+
+.flowchart-operator .flowchart-operator-title {
+    width: 100%;
+    padding: 5px;
+    font-weight: bold;
+    box-sizing: border-box;
+    border-bottom: 1px solid #DDDDDD;
+    background: #F0F0F0;
+    height: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.flowchart-operator .flowchart-operator-inputs-outputs {
+    display: table;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.flowchart-operator .flowchart-operator-inputs, .flowchart-default-operator .flowchart-operator-outputs {
+    display: table-cell;
+    width: 50%;
+}
+
+/*
+ * flowchart-vertical
+ */
+
+.flowchart-vertical .flowchart-operator-inputs,
+.flowchart-vertical .flowchart-operator-outputs {
+    position: relative;
+    text-align: center;
+    display: table;
+    width: 100%;
+}
+
+.flowchart-vertical .flowchart-operator-connector-set {
+    display: table-cell;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.flowchart-operator-outputs .flowchart-operator-connector-set {
+    border-radius: 0 0 8px 8px !important;
+}
+
+.flowchart-vertical .flowchart-operator-connector {
+    position: relative;
+}
+.flowchart-vertical .flowchart-operator-connector-label {
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+.flowchart-vertical .flowchart-operator-inputs .flowchart-operator-connector-label {
+    margin-left: auto;
+}
+.flowchart-vertical .flowchart-operator-connector-arrow {
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #ccc;
+    left: calc(50% - 10px);
+}
+.flowchart-vertical .flowchart-operator-connector:hover .flowchart-operator-connector-arrow {
+    border-left-color: transparent;
+    border-top-color: #999;
+}
+.flowchart-vertical .flowchart-operator-connector-small-arrow {
+    border-right: 5px solid transparent;
+    top: 2px;
+    left: calc(50% - 5px);
+}
+.flowchart-vertical .flowchart-operator-connector-arrow {
+    top: 0px;
+}
+.flowchart-vertical .flowchart-operator-outputs .flowchart-operator-connector-arrow {
+    bottom: -20px;
+    top: auto;
+}
+.flowchart-vertical .flowchart-operator-outputs .flowchart-operator-connector-small-arrow {
+    left: calc(50% - 5px);
+    bottom: -12px;
+    top: auto;
+}
+.flowchart-vertical .flowchart-link rect {
+    display: none;
+}
+
+/*
+ * flowchart-operator-body
+ */
+.flowchart-operator-body {
+    padding: 5px;
+    cursor: move;
+}
+
+.flowchart-operator-v3 {
+    padding: 3px;
+    border-top: 1px solid #cccccc;
+    background: #FAFAFA;
+}
+
+.flowchart-operator-v3 > button:not(:first-child) {
+    margin-left: 3px;
+}
+
+img.v3-image {
+    position: absolute;
+    top: 24px;
+    right: 4px;
+}
+
+div.flowchart-screenshot {
+    width: 100%;
+    min-height: 125px;
+    background-size: cover !important;
+    display: flex;
+    transition: all 0.2s;
+}
+
+a.view-screenshot {
+    padding: 15px;
+    font-size: 28px;
+    border-radius: 100%;
+    background: white;
+    display: block;
+    text-align: center;
+    margin: auto;
+    border: 4px solid #2e8acba6;
+    opacity: 0;
+    transition:all 0.2s;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a.view-screenshot > i {
+    display: block;
+}
+
+a.view-screenshot:hover {
+    opacity: 1;
+}
+
+
+.flowchart-vertical .flowchart-operator-connector {
+    position: relative;
+    float: left;
+    width: 20px;
+    margin-right: 5px;
+    background: #cccccc;
+}
+
+.flowchart-operator .flowchart-operator-title {
+    position: relative;
+    padding-right: 60px;
+    overflow: visible;
+}
+
+span.flowchart-operator-subtitle {
+    display: block;
+    font-size: 10px;
+    color: #868686;
+}
+
+td.text-left {
+    position: relative;
+}
+
+img.v3-image-table {
+    position: absolute;
+    top: 8px;
+    left: -8px;
+}
+
+i.fa.fa-edit.flowchart-edit-title {
+    margin-right: 3px;
+    font-size: 11px;
+    cursor: pointer;
+    color: #010131;
+}
+
+i.fa.fa-edit.flowchart-edit-title:hover {
+    color: blue;
+}
+
+i.fa.flowchart-use-title.fa-check {
+    color: #07a907;
+}
+
+i.fa.flowchart-use-title.fa-check:hover {
+    color: #26e826;
+}
+
+.flowchart-operator.selected {
+    border: 1px solid #559acc !important;
+    box-shadow: 0 3px 5px 0 #848484;
+}
+
+.ui-draggable-dragging {
+    cursor: grabbing !important;
+}
+
+.ui-draggable-dragging .flowchart-operator-title {
+    cursor: grabbing !important;
+}
+
+input.flowchart-operator-title-input {
+    padding: 0 0 0 4px !important;
+    margin: 0;
+    font-size: 13px;
+    min-height: 10px !important;
+    border-radius: 0 !important;
+    border: 0 !important;
+    line-height: 0 !important;
+    background: #f4fbff;
+    box-sizing: content-box;
+}
+
+i.flowchart-operator-toggle-visibility.fa.fa-eye-slash {
+    position: absolute;
+    top: 8px;
+    right: 5px;
+    cursor: pointer;
+}
+
+i.flowchart-operator-toggle-visibility.fa.fa-eye-slash:hover:before {
+    content: "\f06e" !important;
+}
+
+.low-opacity {
+    opacity: 0.1 !important;
+}
+
+.silo-context-menu {
+    height: 200px;
+    width: 200px;
+    background: white;
+    display: block;
+    position: absolute;
+    border: 1px solid #bdbdbd;
+    box-shadow: 4px 4px 7px -4px #909090;
+    padding: 10px;
+    box-sizing: border-box;
+    padding-bottom: 40px !important;
+    top: -11px;
+    right: -208px;
+    z-index: 9999;
+}
+
+span.silo-context-menu-label {
+    font-weight: 700;
+    font-size: 14px;
+    display: inline-block;
+    margin-bottom: 2px;
+    margin-left: 2px;
+}
+
+.silo-context-menu-actions {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+}
+
+button.flat-button {
+    background: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: 1px solid #dedede;
+    box-shadow: 0px 0px 4px -4px #a5a5a5;
+    transition: all 0.3s;
+}
+
+button.flat-button:hover {
+    box-shadow: 0px 5px 4px -4px #a5a5a5;
+    border-color: #a0a0a0;
+}
+
+button.flat-button.flat-button-success > i {
+    color: green;
+}
+
+button.flat-button.flat-button-success:hover {
+    border-color: green;
+}
+
+button.flat-button.flat-button-danger > i {
+    color: red;
+}
+
+button.flat-button.flat-button-danger:hover {
+    border-color: red;
+}
+
+.silo-categories-tags {
+    position: relative;
+    padding-left: 50px;
+    margin-left: 11px;
+    padding-bottom: 60px;
+}
+
+.silo-categories-tags-actions {
+    position: absolute;
+    top: 11px;
+    left: 45px;
+}
+
+.silo-categories-tags-add {
+    position: absolute;
+    top: 11px;
+    left: 0px;
+}
+
+button.silo-categories-tags-button {
+    display: block;
+    margin-bottom: 10px;
+    width: 35px;
+    height: 35px;
+    appearance: none;
+    border: 1px solid #cccccc;
+    cursor: pointer;
+}
+
+button.silo-categories-tags-button.hide-all-categories {
+    background: #efd6fb;
+}
+
+button.silo-categories-tags-button.hide-all-tags {
+    background: #e1fbd6;
+}
+
+i.flowchart-operator-settings {
+    position: absolute;
+    top: 25px;
+    cursor: help;
+    right: 23px;
+}
+
+.settings h3 {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.settings h3:hover {
+    color: #559acc;
+}
+
+.settings i.fa.uk-float-right {
+    font-size: 25px;
+    color: #559acc;
+}
+
+.uk-accordion-content {
+    padding: 15px !important;
+}
+
+i.flowchart-operator-toggle-options.fa.fa-gear {
+    padding: 2px 3px;
+    border: 1px solid #cccccc;
+    font-size: 15px;
+    background: #d6ecfb;
+    color: #444444;
+}
+
+.operator-options {
+    display: none;
+    position: absolute;
+    top: -55px;
+    right: -21px;
+    padding: 20px;
+    z-index: 995;
+}
+
+.flowchart-operator-title:hover .operator-options {
+    display: block !important;
+}
+
+.silo-context-menu input {
+    display: block;
+    width: 100%;
+    border-radius: 0;
+    border: 1px solid #a5a5a5;
+    border-bottom: 1px solid #6b6b6b;
+}
+
+.flowchart-operator.operator-post .operator-options {
+    top: -46px !important;
+}
+
+.flowchart-operator.operator-post .operator-options i.flowchart-operator-toggle-options.fa.fa-gear {
+    background: #fbf9d6;
+}
+
+
+.flowchart-operator.operator-tag .operator-options {
+    top: -55px !important;
+}
+
+.flowchart-operator.operator-tag .operator-options i.flowchart-operator-toggle-options.fa.fa-gear {
+    background: #e1fbd6;
+}
+
+
+.flowchart-operator.operator-category .operator-options {
+    top: -55px !important;
+}
+
+.flowchart-operator.operator-category .operator-options i.flowchart-operator-toggle-options.fa.fa-gear {
+    background: #efd6fb;
+}
+
+a.flowchart-operator-edit {
+    position: absolute;
+    top: 6px;
+    right: 21px;
+}
+.add-category {
+    background: #efd6fb;
+}
+.add-tags {
+    background: #e1fbd6;
+}
+.silo-links-options {
+    padding: 10px;
+}
+
+i.flowchart-operator-remove-tag, i.flowchart-operator-remove-category {
+    display: none;
+}
+
+.draggable_operator:hover i.flowchart-operator-remove-tag, .draggable_operator:hover i.flowchart-operator-remove-category {
+    display: block;
+}
+.flowchart-operator-screenshot {
+    position: absolute;
+    top: 8px;
+    right: 40px;
+    cursor: pointer;
+    color: #1d8acb;
+}
+.flowchart-operator-screenshot:hover {
+    color: #0b5f90;
+}
