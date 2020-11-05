@@ -1,0 +1,1 @@
+// This script it for loading Tiny MCE on serp-tech-builder
