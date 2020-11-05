@@ -1,0 +1,1703 @@
+html,body {
+    height: auto !important;
+}
+/* ========================================================================
+   Component: Grid
+ ========================================================================== */
+/*
+ * 1. Makes grid more robust so that it can be used with other block elements like lists
+ */
+.uk-grid {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    /* 1 */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+/*
+ * DEPRECATED
+ * Micro clearfix
+ * Can't use `table` because it creates a 1px gap when it becomes a flex item, only in Webkit
+ */
+.uk-grid:before,
+.uk-grid:after {
+    content: "";
+    display: block;
+    overflow: hidden;
+}
+.uk-grid:after {
+    clear: both;
+}
+/*
+ * Grid cell
+ * 1. Space is allocated solely based on content dimensions
+ * 2. Makes grid more robust so that it can be used with other block elements
+ * 3. DEPRECATED Using `float` to support IE9
+ */
+.uk-grid > * {
+    /* 1 */
+    -ms-flex: none;
+    -webkit-flex: none;
+    flex: none;
+    /* 2 */
+    margin: 0;
+    /* 3 */
+    float: left;
+}
+/*
+ * Remove margin from the last-child
+ */
+.uk-grid > * > :last-child {
+    margin-bottom: 0;
+}
+/* Grid gutter
+ ========================================================================== */
+/*
+ * Default gutter
+ */
+/* Horizontal */
+.uk-grid {
+    margin-left: -25px;
+}
+.uk-grid > * {
+    padding-left: 25px;
+}
+/* Vertical */
+.uk-grid + .uk-grid,
+.uk-grid-margin,
+.uk-grid > * > .uk-panel + .uk-panel {
+    margin-top: 25px;
+}
+/* Large screen and bigger */
+@media (min-width: 1220px) {
+    /* Horizontal */
+    .uk-grid {
+        margin-left: -35px;
+    }
+    .uk-grid > * {
+        padding-left: 35px;
+    }
+    /* Vertical */
+    .uk-grid + .uk-grid,
+    .uk-grid-margin,
+    .uk-grid > * > .uk-panel + .uk-panel {
+        margin-top: 35px;
+    }
+}
+/*
+ * Collapse gutter
+ */
+/* Horizontal */
+.uk-grid-collapse {
+    margin-left: 0;
+}
+.uk-grid-collapse > * {
+    padding-left: 0;
+}
+/* Vertical */
+.uk-grid-collapse + .uk-grid-collapse,
+.uk-grid-collapse > .uk-grid-margin,
+.uk-grid-collapse > * > .uk-panel + .uk-panel {
+    margin-top: 0;
+}
+/*
+ * Small gutter
+ */
+/* Horizontal */
+.uk-grid-small {
+    margin-left: -10px;
+}
+.uk-grid-small > * {
+    padding-left: 10px;
+}
+/* Vertical */
+.uk-grid-small + .uk-grid-small,
+.uk-grid-small > .uk-grid-margin,
+.uk-grid-small > * > .uk-panel + .uk-panel {
+    margin-top: 10px;
+}
+/*
+ * Medium gutter
+ */
+/* Horizontal */
+.uk-grid-medium {
+    margin-left: -25px;
+}
+.uk-grid-medium > * {
+    padding-left: 25px;
+}
+/* Vertical */
+.uk-grid-medium + .uk-grid-medium,
+.uk-grid-medium > .uk-grid-margin,
+.uk-grid-medium > * > .uk-panel + .uk-panel {
+    margin-top: 25px;
+}
+/*
+ * Large gutter
+ */
+/* Large screen and bigger */
+@media (min-width: 960px) {
+    /* Horizontal */
+    .uk-grid-large {
+        margin-left: -35px;
+    }
+    .uk-grid-large > * {
+        padding-left: 35px;
+    }
+    /* Vertical */
+    .uk-grid-large + .uk-grid-large,
+    .uk-grid-large-margin,
+    .uk-grid-large > * > .uk-panel + .uk-panel {
+        margin-top: 35px;
+    }
+}
+/* Extra Large screens */
+@media (min-width: 1220px) {
+    /* Horizontal */
+    .uk-grid-large {
+        margin-left: -50px;
+    }
+    .uk-grid-large > * {
+        padding-left: 50px;
+    }
+    /* Vertical */
+    .uk-grid-large + .uk-grid-large,
+    .uk-grid-large-margin,
+    .uk-grid-large > * > .uk-panel + .uk-panel {
+        margin-top: 50px;
+    }
+}
+/* Modifier: `uk-grid-divider`
+ ========================================================================== */
+/*
+ * Horizontal divider
+ * Only works with the default gutter. Does not work with gutter collapse, small or large.
+ * Does not work with `uk-push-*`, `uk-pull-*` and not if the columns float into the next row.
+ */
+.uk-grid-divider:not(:empty) {
+    margin-left: -25px;
+    margin-right: -25px;
+}
+.uk-grid-divider > * {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.uk-grid-divider > [class*='uk-width-1-']:not(.uk-width-1-1):nth-child(n+2),
+.uk-grid-divider > [class*='uk-width-2-']:nth-child(n+2),
+.uk-grid-divider > [class*='uk-width-3-']:nth-child(n+2),
+.uk-grid-divider > [class*='uk-width-4-']:nth-child(n+2),
+.uk-grid-divider > [class*='uk-width-5-']:nth-child(n+2),
+.uk-grid-divider > [class*='uk-width-6-']:nth-child(n+2),
+.uk-grid-divider > [class*='uk-width-7-']:nth-child(n+2),
+.uk-grid-divider > [class*='uk-width-8-']:nth-child(n+2),
+.uk-grid-divider > [class*='uk-width-9-']:nth-child(n+2) {
+    border-left: 1px solid #ddd;
+}
+/* Tablet and bigger */
+@media (min-width: 768px) {
+    .uk-grid-divider > [class*='uk-width-medium-']:not(.uk-width-medium-1-1):nth-child(n+2) {
+        border-left: 1px solid #ddd;
+    }
+}
+/* Desktop and bigger */
+@media (min-width: 960px) {
+    .uk-grid-divider > [class*='uk-width-large-']:not(.uk-width-large-1-1):nth-child(n+2) {
+        border-left: 1px solid #ddd;
+    }
+}
+/* Large screen and bigger */
+@media (min-width: 1220px) {
+    /*
+       * Large gutter
+       */
+    .uk-grid-divider:not(:empty) {
+        margin-left: -35px;
+        margin-right: -35px;
+    }
+    .uk-grid-divider > * {
+        padding-left: 35px;
+        padding-right: 35px;
+    }
+    .uk-grid-divider:empty {
+        margin-top: 35px;
+        margin-bottom: 35px;
+    }
+}
+/*
+ * Vertical divider
+ */
+.uk-grid-divider:empty {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border-top: 1px solid #ddd;
+}
+/* Match panels in grids
+ ========================================================================== */
+/*
+ * 1. Behave like a block element
+ */
+.uk-grid-match > * {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    /* 1 */
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.uk-grid-match > * > * {
+    /* 1 */
+    -ms-flex: none;
+    -webkit-flex: none;
+    flex: none;
+    box-sizing: border-box;
+    width: 100%;
+}
+/* Even grid cell widths
+ ========================================================================== */
+[class*='uk-grid-width'] > * {
+    box-sizing: border-box;
+    width: 100%;
+}
+.uk-grid-width-1-2 > * {
+    width: 50%;
+}
+.uk-grid-width-1-3 > * {
+    width: 33.333%;
+}
+.uk-grid-width-1-4 > * {
+    width: 25%;
+}
+.uk-grid-width-1-5 > * {
+    width: 20%;
+}
+.uk-grid-width-1-6 > * {
+    width: 16.666%;
+}
+.uk-grid-width-1-10 > * {
+    width: 10%;
+}
+.uk-grid-width-auto > * {
+    width: auto;
+}
+/* Phone landscape and bigger */
+@media (min-width: 480px) {
+    .uk-grid-width-small-1-1 > * {
+        width: 100%;
+    }
+    .uk-grid-width-small-1-2 > * {
+        width: 50%;
+    }
+    .uk-grid-width-small-1-3 > * {
+        width: 33.333%;
+    }
+    .uk-grid-width-small-1-4 > * {
+        width: 25%;
+    }
+    .uk-grid-width-small-1-5 > * {
+        width: 20%;
+    }
+    .uk-grid-width-small-1-6 > * {
+        width: 16.666%;
+    }
+    .uk-grid-width-small-1-10 > * {
+        width: 10%;
+    }
+}
+/* Tablet and bigger */
+@media (min-width: 768px) {
+    .uk-grid-width-medium-1-1 > * {
+        width: 100%;
+    }
+    .uk-grid-width-medium-1-2 > * {
+        width: 50%;
+    }
+    .uk-grid-width-medium-1-3 > * {
+        width: 33.333%;
+    }
+    .uk-grid-width-medium-1-4 > * {
+        width: 25%;
+    }
+    .uk-grid-width-medium-1-5 > * {
+        width: 20%;
+    }
+    .uk-grid-width-medium-1-6 > * {
+        width: 16.666%;
+    }
+    .uk-grid-width-medium-1-10 > * {
+        width: 10%;
+    }
+}
+/* Desktop and bigger */
+@media (min-width: 960px) {
+    .uk-grid-width-large-1-1 > * {
+        width: 100%;
+    }
+    .uk-grid-width-large-1-2 > * {
+        width: 50%;
+    }
+    .uk-grid-width-large-1-3 > * {
+        width: 33.333%;
+    }
+    .uk-grid-width-large-1-4 > * {
+        width: 25%;
+    }
+    .uk-grid-width-large-1-5 > * {
+        width: 20%;
+    }
+    .uk-grid-width-large-1-6 > * {
+        width: 16.666%;
+    }
+    .uk-grid-width-large-1-10 > * {
+        width: 10%;
+    }
+}
+/* Large screen and bigger */
+@media (min-width: 1220px) {
+    .uk-grid-width-xlarge-1-1 > * {
+        width: 100%;
+    }
+    .uk-grid-width-xlarge-1-2 > * {
+        width: 50%;
+    }
+    .uk-grid-width-xlarge-1-3 > * {
+        width: 33.333%;
+    }
+    .uk-grid-width-xlarge-1-4 > * {
+        width: 25%;
+    }
+    .uk-grid-width-xlarge-1-5 > * {
+        width: 20%;
+    }
+    .uk-grid-width-xlarge-1-6 > * {
+        width: 16.666%;
+    }
+    .uk-grid-width-xlarge-1-10 > * {
+        width: 10%;
+    }
+}
+/* Sub-objects: `uk-width-*`
+ ========================================================================== */
+[class*='uk-width'] {
+    box-sizing: border-box;
+    width: 100%;
+}
+/*
+ * Widths
+ */
+/* Whole */
+.uk-width-1-1 {
+    width: 100%;
+}
+/* Halves */
+.uk-width-1-2,
+.uk-width-2-4,
+.uk-width-3-6,
+.uk-width-5-10 {
+    width: 50%;
+}
+/* Thirds */
+.uk-width-1-3,
+.uk-width-2-6 {
+    width: 33.333%;
+}
+.uk-width-2-3,
+.uk-width-4-6 {
+    width: 66.666%;
+}
+/* Quarters */
+.uk-width-1-4 {
+    width: 25%;
+}
+.uk-width-3-4 {
+    width: 75%;
+}
+/* Fifths */
+.uk-width-1-5,
+.uk-width-2-10 {
+    width: 20%;
+}
+.uk-width-2-5,
+.uk-width-4-10 {
+    width: 40%;
+}
+.uk-width-3-5,
+.uk-width-6-10 {
+    width: 60%;
+}
+.uk-width-4-5,
+.uk-width-8-10 {
+    width: 80%;
+}
+/* Sixths */
+.uk-width-1-6 {
+    width: 16.666%;
+}
+.uk-width-5-6 {
+    width: 83.333%;
+}
+/* Tenths */
+.uk-width-1-10 {
+    width: 10%;
+}
+.uk-width-3-10 {
+    width: 30%;
+}
+.uk-width-7-10 {
+    width: 70%;
+}
+.uk-width-9-10 {
+    width: 90%;
+}
+/* Phone landscape and bigger */
+@media (min-width: 480px) {
+    /* Whole */
+    .uk-width-small-1-1 {
+        width: 100%;
+    }
+    /* Halves */
+    .uk-width-small-1-2,
+    .uk-width-small-2-4,
+    .uk-width-small-3-6,
+    .uk-width-small-5-10 {
+        width: 50%;
+    }
+    /* Thirds */
+    .uk-width-small-1-3,
+    .uk-width-small-2-6 {
+        width: 33.333%;
+    }
+    .uk-width-small-2-3,
+    .uk-width-small-4-6 {
+        width: 66.666%;
+    }
+    /* Quarters */
+    .uk-width-small-1-4 {
+        width: 25%;
+    }
+    .uk-width-small-3-4 {
+        width: 75%;
+    }
+    /* Fifths */
+    .uk-width-small-1-5,
+    .uk-width-small-2-10 {
+        width: 20%;
+    }
+    .uk-width-small-2-5,
+    .uk-width-small-4-10 {
+        width: 40%;
+    }
+    .uk-width-small-3-5,
+    .uk-width-small-6-10 {
+        width: 60%;
+    }
+    .uk-width-small-4-5,
+    .uk-width-small-8-10 {
+        width: 80%;
+    }
+    /* Sixths */
+    .uk-width-small-1-6 {
+        width: 16.666%;
+    }
+    .uk-width-small-5-6 {
+        width: 83.333%;
+    }
+    /* Tenths */
+    .uk-width-small-1-10 {
+        width: 10%;
+    }
+    .uk-width-small-3-10 {
+        width: 30%;
+    }
+    .uk-width-small-7-10 {
+        width: 70%;
+    }
+    .uk-width-small-9-10 {
+        width: 90%;
+    }
+}
+/* Tablet and bigger */
+@media (min-width: 768px) {
+    /* Whole */
+    .uk-width-medium-1-1 {
+        width: 100%;
+    }
+    /* Halves */
+    .uk-width-medium-1-2,
+    .uk-width-medium-2-4,
+    .uk-width-medium-3-6,
+    .uk-width-medium-5-10 {
+        width: 50%;
+    }
+    /* Thirds */
+    .uk-width-medium-1-3,
+    .uk-width-medium-2-6 {
+        width: 33.333%;
+    }
+    .uk-width-medium-2-3,
+    .uk-width-medium-4-6 {
+        width: 66.666%;
+    }
+    /* Quarters */
+    .uk-width-medium-1-4 {
+        width: 25%;
+    }
+    .uk-width-medium-3-4 {
+        width: 75%;
+    }
+    /* Fifths */
+    .uk-width-medium-1-5,
+    .uk-width-medium-2-10 {
+        width: 20%;
+    }
+    .uk-width-medium-2-5,
+    .uk-width-medium-4-10 {
+        width: 40%;
+    }
+    .uk-width-medium-3-5,
+    .uk-width-medium-6-10 {
+        width: 60%;
+    }
+    .uk-width-medium-4-5,
+    .uk-width-medium-8-10 {
+        width: 80%;
+    }
+    /* Sixths */
+    .uk-width-medium-1-6 {
+        width: 16.666%;
+    }
+    .uk-width-medium-5-6 {
+        width: 83.333%;
+    }
+    /* Tenths */
+    .uk-width-medium-1-10 {
+        width: 10%;
+    }
+    .uk-width-medium-3-10 {
+        width: 30%;
+    }
+    .uk-width-medium-7-10 {
+        width: 70%;
+    }
+    .uk-width-medium-9-10 {
+        width: 90%;
+    }
+}
+/* Desktop and bigger */
+@media (min-width: 960px) {
+    /* Whole */
+    .uk-width-large-1-1 {
+        width: 100%;
+    }
+    /* Halves */
+    .uk-width-large-1-2,
+    .uk-width-large-2-4,
+    .uk-width-large-3-6,
+    .uk-width-large-5-10 {
+        width: 50%;
+    }
+    /* Thirds */
+    .uk-width-large-1-3,
+    .uk-width-large-2-6 {
+        width: 33.333%;
+    }
+    .uk-width-large-2-3,
+    .uk-width-large-4-6 {
+        width: 66.666%;
+    }
+    /* Quarters */
+    .uk-width-large-1-4 {
+        width: 25%;
+    }
+    .uk-width-large-3-4 {
+        width: 75%;
+    }
+    /* Fifths */
+    .uk-width-large-1-5,
+    .uk-width-large-2-10 {
+        width: 20%;
+    }
+    .uk-width-large-2-5,
+    .uk-width-large-4-10 {
+        width: 40%;
+    }
+    .uk-width-large-3-5,
+    .uk-width-large-6-10 {
+        width: 60%;
+    }
+    .uk-width-large-4-5,
+    .uk-width-large-8-10 {
+        width: 80%;
+    }
+    /* Sixths */
+    .uk-width-large-1-6 {
+        width: 16.666%;
+    }
+    .uk-width-large-5-6 {
+        width: 83.333%;
+    }
+    /* Tenths */
+    .uk-width-large-1-10 {
+        width: 10%;
+    }
+    .uk-width-large-3-10 {
+        width: 30%;
+    }
+    .uk-width-large-7-10 {
+        width: 70%;
+    }
+    .uk-width-large-9-10 {
+        width: 90%;
+    }
+}
+/* Large screen and bigger */
+@media (min-width: 1220px) {
+    /* Whole */
+    .uk-width-xlarge-1-1 {
+        width: 100%;
+    }
+    /* Halves */
+    .uk-width-xlarge-1-2,
+    .uk-width-xlarge-2-4,
+    .uk-width-xlarge-3-6,
+    .uk-width-xlarge-5-10 {
+        width: 50%;
+    }
+    /* Thirds */
+    .uk-width-xlarge-1-3,
+    .uk-width-xlarge-2-6 {
+        width: 33.333%;
+    }
+    .uk-width-xlarge-2-3,
+    .uk-width-xlarge-4-6 {
+        width: 66.666%;
+    }
+    /* Quarters */
+    .uk-width-xlarge-1-4 {
+        width: 25%;
+    }
+    .uk-width-xlarge-3-4 {
+        width: 75%;
+    }
+    /* Fifths */
+    .uk-width-xlarge-1-5,
+    .uk-width-xlarge-2-10 {
+        width: 20%;
+    }
+    .uk-width-xlarge-2-5,
+    .uk-width-xlarge-4-10 {
+        width: 40%;
+    }
+    .uk-width-xlarge-3-5,
+    .uk-width-xlarge-6-10 {
+        width: 60%;
+    }
+    .uk-width-xlarge-4-5,
+    .uk-width-xlarge-8-10 {
+        width: 80%;
+    }
+    /* Sixths */
+    .uk-width-xlarge-1-6 {
+        width: 16.666%;
+    }
+    .uk-width-xlarge-5-6 {
+        width: 83.333%;
+    }
+    /* Tenths */
+    .uk-width-xlarge-1-10 {
+        width: 10%;
+    }
+    .uk-width-xlarge-3-10 {
+        width: 30%;
+    }
+    .uk-width-xlarge-7-10 {
+        width: 70%;
+    }
+    .uk-width-xlarge-9-10 {
+        width: 90%;
+    }
+}
+
+/* ========================================================================
+   Component: Modal
+ ========================================================================== */
+/*
+ * This is the modal overlay and modal dialog container
+ * 1. Hide by default
+ * 2. Set fixed position
+ * 3. Allow scrolling for the modal dialog
+ * 4. Mask the background page
+ * 5. Fade-in transition
+ * 6. Deactivate browser history navigation in IE11
+ * 7. force hardware acceleration to prevent browser rendering hiccups
+ */
+.uk-modal {
+    /* 1 */
+    display: none;
+    /* 2 */
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1010;
+    /* 3 */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    /* 4 */
+    background: rgba(0, 0, 0, 0.6);
+    /* 5 */
+    opacity: 0;
+    -webkit-transition: opacity 0.15s linear;
+    transition: opacity 0.15s linear;
+    /* 6 */
+    touch-action: cross-slide-y pinch-zoom double-tap-zoom;
+    /* 7 */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+/*
+ * Open state
+ */
+.uk-modal.uk-open {
+    opacity: 1;
+}
+/*
+ * Prevents duplicated scrollbar caused by 4.
+ */
+.uk-modal-page,
+.uk-modal-page body {
+    overflow: hidden;
+}
+/* Sub-object: `uk-modal-dialog`
+ ========================================================================== */
+/*
+ * 1. Create position context for caption, spinner and close button
+ * 2. Set box sizing
+ * 3. Set style
+ * 4. Slide-in transition
+ */
+.uk-modal-dialog {
+    /* 1 */
+    position: relative;
+    /* 2 */
+    box-sizing: border-box;
+    margin: 50px auto;
+    padding: 20px;
+    width: 600px;
+    max-width: 100%;
+    max-width: calc(100% - 20px);
+    /* 3 */
+    background: #fff;
+    /* 4 */
+    opacity: 0;
+    -webkit-transform: translateY(-100px);
+    transform: translateY(-100px);
+    -webkit-transition: opacity 0.3s linear, -webkit-transform 0.3s ease-out;
+    transition: opacity 0.3s linear, transform 0.3s ease-out;
+}
+/* Phone landscape and smaller */
+@media (max-width: 767px) {
+    /*
+       * Fit in small screen
+       */
+    .uk-modal-dialog {
+        width: auto;
+        margin: 10px auto;
+    }
+}
+/*
+ * Open state
+ */
+.uk-open .uk-modal-dialog {
+    /* 4 */
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+}
+/*
+ * Remove margin from the last-child
+ */
+.uk-modal-dialog > :not([class*='uk-modal-']):last-child {
+    margin-bottom: 0;
+}
+/* Close in modal
+ ========================================================================== */
+.uk-modal-dialog > .uk-close:first-child {
+    margin: -10px -10px 0 0;
+    float: right;
+}
+/*
+ * Remove margin from adjacent element
+ */
+.uk-modal-dialog > .uk-close:first-child + :not([class*='uk-modal-']) {
+    margin-top: 0;
+}
+/* Modifier: `uk-modal-dialog-lightbox`
+ ========================================================================== */
+.uk-modal-dialog-lightbox {
+    margin: 15px auto;
+    padding: 0;
+    max-width: 95%;
+    max-width: calc(100% - 30px);
+    min-height: 50px;
+}
+/*
+ * Close button
+ */
+.uk-modal-dialog-lightbox > .uk-close:first-child {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    margin: 0;
+    float: none;
+}
+/* Phone landscape and smaller */
+@media (max-width: 767px) {
+    .uk-modal-dialog-lightbox > .uk-close:first-child {
+        top: -7px;
+        right: -7px;
+    }
+}
+/* Modifier: `uk-modal-dialog-blank`
+ ========================================================================== */
+.uk-modal-dialog-blank {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    -webkit-transition: opacity 0.3s linear;
+    transition: opacity 0.3s linear;
+}
+/*
+* Close button
+*/
+.uk-modal-dialog-blank > .uk-close:first-child {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1;
+    margin: 0;
+    float: none;
+}
+/* Modifier: `uk-modal-dialog-large`
+ ========================================================================== */
+/* Tablet and bigger */
+@media (min-width: 768px) {
+    .uk-modal-dialog-large {
+        width: 930px;
+    }
+}
+/* Large screen and bigger */
+@media (min-width: 1220px) {
+    .uk-modal-dialog-large {
+        width: 1130px;
+    }
+}
+/* Sub-Object: `uk-modal-header` and `uk-modal-footer`
+ ========================================================================== */
+.uk-modal-header {
+    margin-bottom: 15px;
+}
+.uk-modal-footer {
+    margin-top: 15px;
+}
+/*
+ * Remove margin from the last-child
+ */
+.uk-modal-header > :last-child,
+.uk-modal-footer > :last-child {
+    margin-bottom: 0;
+    padding-top: 0;
+}
+/* Sub-Object: `uk-modal-caption`
+ ========================================================================== */
+.uk-modal-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -20px;
+    margin-bottom: -10px;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/* Sub-Object: `uk-modal-spinner`
+ ========================================================================== */
+.uk-modal-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    font-size: 25px;
+    color: #ddd;
+}
+.uk-modal-spinner:after {
+    content: "\f110";
+    display: block;
+    font-family: FontAwesome;
+    -webkit-animation: uk-rotate 2s infinite linear;
+    animation: uk-rotate 2s infinite linear;
+}
+
+.uk-pagination {
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    font-size: 0;
+}
+
+.uk-pagination-left {
+    text-align: left;
+}
+
+ul.uk-pagination.uk-pagination-shortcodes {
+    display: inline-block;
+    margin: 0;
+    float: right;
+}
+
+.uk-pagination:after, .uk-pagination:before {
+    content: "";
+    display: table;
+}
+
+.uk-pagination>li {
+    display: inline-block;
+    font-size: 1rem;
+    vertical-align: top;
+}
+
+.uk-pagination>li>a, .uk-pagination>li>span {
+    display: inline-block;
+    min-width: 16px;
+    padding: 3px 5px;
+    line-height: 20px;
+    text-decoration: none;
+    box-sizing: content-box;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.uk-pagination>li>a {
+    background: #f7f7f7;
+    color: #666;
+    border: 1px solid rgba(0,0,0,.2);
+    border-bottom-color: rgba(0,0,0,.3);
+    background-origin: border-box;
+    background-image: -webkit-linear-gradient(top,#fff,#eee);
+    background-image: linear-gradient(to bottom,#fff,#eee);
+    text-shadow: 0 1px 0 #fff;
+}
+
+.uk-pagination-shortcodes > li > a, .uk-pagination-shortcodes > li > span {
+    padding: 0;
+    font-size: 12px;
+    width: 24px;
+    height: 19px;
+}
+
+.uk-pagination:after {
+    clear: both;
+}
+
+.uk-pagination>li:nth-child(n+2) {
+    margin-left: 5px;
+}
+
+.uk-pagination-previous {
+    float: left;
+}
+
+.uk-pagination-next {
+    float: right;
+}
+
+/* ========================================================================
+   Component: Table
+ ========================================================================== */
+/*
+ * 1. Remove most spacing between table cells.
+ * 2. Block element behavior
+ * 3. Style
+ */
+.uk-table {
+    /* 1 */
+    border-collapse: collapse;
+    border-spacing: 0;
+    /* 2 */
+    width: 100%;
+    /* 3 */
+    margin-bottom: 15px;
+}
+/*
+ * Add margin if adjacent element
+ */
+* + .uk-table {
+    margin-top: 15px;
+}
+.uk-table th,
+.uk-table td {
+    padding: 8px 8px;
+}
+/*
+ * Set alignment
+ */
+.uk-table th {
+    text-align: left;
+}
+.uk-table td {
+    vertical-align: top;
+}
+.uk-table thead th {
+    vertical-align: bottom;
+}
+/*
+ * Caption and footer
+ */
+.uk-table caption,
+.uk-table tfoot {
+    font-size: 12px;
+    font-style: italic;
+}
+.uk-table caption {
+    text-align: left;
+    color: #999;
+}
+/*
+ * Active State
+ */
+.uk-table tbody tr.uk-active {
+    background: #EEE;
+}
+/* Sub-modifier: `uk-table-middle`
+ ========================================================================== */
+.uk-table-middle,
+.uk-table-middle td {
+    vertical-align: middle !important;
+}
+/* Modifier: `uk-table-striped`
+ ========================================================================== */
+.uk-table-striped tbody tr:nth-of-type(odd) {
+    background: #f5f5f5;
+}
+/* Modifier: `uk-table-condensed`
+ ========================================================================== */
+.uk-table-condensed td {
+    padding: 4px 8px;
+}
+/* Modifier: `uk-table-hover`
+ ========================================================================== */
+.uk-table-hover tbody tr:hover {
+    background: #EEE;
+}
+/* ========================================================================
+   Component: Pagination
+ ========================================================================== */
+/*
+ * 1. Remove default list style
+ * 2. Center pagination by default
+ * 3. Remove whitespace between child elements when using `inline-block`
+ */
+.uk-pagination {
+    /* 1 */
+    padding: 0;
+    list-style: none;
+    /* 2 */
+    text-align: center;
+    /* 3 */
+    font-size: 0.001px;
+}
+/*
+ * Micro clearfix
+ * Needed if `uk-pagination-previous` or `uk-pagination-next` sub-objects are used
+ */
+.uk-pagination:before,
+.uk-pagination:after {
+    content: "";
+    display: table;
+}
+.uk-pagination:after {
+    clear: both;
+}
+/* Items
+ ========================================================================== */
+/*
+ * 1. Reset whitespace hack
+ * 2. Remove the gap at the bottom of it container
+ */
+.uk-pagination > li {
+    display: inline-block;
+    /* 1 */
+    font-size: 1rem;
+    /* 2 */
+    vertical-align: top;
+}
+.uk-pagination > li:nth-child(n+2) {
+    margin-left: 5px;
+}
+/*
+ * 1. Makes pagination more robust against different box-sizing use
+ * 2. Reset text-align to center if alignment modifier is used
+ */
+.uk-pagination > li > a,
+.uk-pagination > li > span {
+    display: inline-block;
+    min-width: 16px;
+    padding: 3px 5px;
+    line-height: 20px;
+    text-decoration: none;
+    /* 1 */
+    box-sizing: content-box;
+    /* 2 */
+    text-align: center;
+}
+/*
+ * Links
+ */
+.uk-pagination > li > a {
+    background: #eee;
+    color: #444;
+}
+/*
+ * Hover
+ * 1. Apply hover style also to focus state
+ * 2. Remove default focus style
+ */
+.uk-pagination > li > a:hover,
+.uk-pagination > li > a:focus {
+    background-color: #f5f5f5;
+    color: #444;
+    /* 2 */
+    outline: none;
+}
+/* OnClick */
+.uk-pagination > li > a:active {
+    background-color: #ddd;
+    color: #444;
+}
+/*
+ * Active
+ */
+.uk-pagination > .uk-active > span {
+    background: #00a8e6;
+    color: #fff;
+}
+/*
+ * Disabled
+ */
+.uk-pagination > .uk-disabled > span {
+    background-color: #f5f5f5;
+    color: #999;
+}
+/* Previous and next navigation
+ ========================================================================== */
+.uk-pagination-previous {
+    float: left;
+}
+.uk-pagination-next {
+    float: right;
+}
+/* Alignment modifiers
+ ========================================================================== */
+.uk-pagination-left {
+    text-align: left;
+}
+.uk-pagination-right {
+    text-align: right;
+}
+
+/* ========================================================================
+   Component: Form
+ ========================================================================== */
+/*
+ * 1. Define consistent box sizing.
+ *    Default is `content-box` with following exceptions set to `border-box`
+ *    `button`, `select`, `input[type="checkbox"]` and `input[type="radio"]`
+ *    `input[type="search"]` in Chrome, Safari and Opera
+ *    `input[type="color"]` in Firefox
+ * 2. Address margins set differently in Firefox/IE and Chrome/Safari/Opera.
+ * 3. Remove `border-radius` in iOS.
+ * 4. Correct `font` properties and `color` not being inherited.
+ */
+.uk-form input,
+.uk-form select,
+.uk-form textarea {
+    /* 1 */
+    box-sizing: border-box;
+    /* 2 */
+    margin: 0;
+    /* 3 */
+    border-radius: 0;
+    /* 4 */
+    font: inherit;
+    color: inherit;
+}
+/*
+ * Address inconsistent `text-transform` inheritance which is only inherit in Firefox
+ */
+.uk-form select {
+    text-transform: none;
+}
+/*
+ * 1. Correct `font` properties not being inherited.
+ * 2. Don't inherit the `font-weight` and use `bold` instead.
+ * NOTE: Both declarations don't work in Chrome, Safari and Opera.
+ */
+.uk-form optgroup {
+    /* 1 */
+    font: inherit;
+    /* 2 */
+    font-weight: bold;
+}
+/*
+ * Removes inner padding and border in Firefox 4+.
+ */
+.uk-form input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+/*
+ * Removes excess padding in IE 8/9/10.
+ */
+.uk-form input[type="checkbox"],
+.uk-form input[type="radio"] {
+    padding: 0;
+}
+/*
+ * Improves consistency of cursor style for clickable elements
+ */
+.uk-form input[type="checkbox"]:not(:disabled),
+.uk-form input[type="radio"]:not(:disabled) {
+    cursor: pointer;
+}
+/*
+ * Remove default style in iOS.
+ */
+.uk-form textarea,
+.uk-form input:not([type]),
+.uk-form input[type="text"],
+.uk-form input[type="password"],
+.uk-form input[type="email"],
+.uk-form input[type="url"],
+.uk-form input[type="search"],
+.uk-form input[type="tel"],
+.uk-form input[type="number"],
+.uk-form input[type="datetime"] {
+    -webkit-appearance: none;
+}
+/*
+ * Remove inner padding and search cancel button in Chrome, Safari and Opera on OS X.
+ */
+.uk-form input[type="search"]::-webkit-search-cancel-button,
+.uk-form input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+/*
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+.uk-form input[type="number"]::-webkit-inner-spin-button,
+.uk-form input[type="number"]::-webkit-outer-spin-button {
+    height: auto;
+}
+/*
+ * Define consistent border, margin, and padding.
+ */
+.uk-form fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+/*
+ * 1. Remove default vertical scrollbar in IE 8/9/10/11.
+ * 2. Improve readability and alignment in all browsers.
+ */
+.uk-form textarea {
+    /* 1 */
+    overflow: auto;
+    /* 2 */
+    vertical-align: top;
+}
+/*
+ * Removes placeholder transparency in Firefox.
+ */
+.uk-form ::-moz-placeholder {
+    opacity: 1;
+}
+/*
+ * Removes `box-shadow` for invalid controls in Firefox.
+ */
+.uk-form :invalid {
+    box-shadow: none;
+}
+/*
+ * Vertical alignment
+ */
+.uk-form input:not([type="radio"]):not([type="checkbox"]),
+.uk-form select {
+    vertical-align: middle;
+}
+/* Style
+ ========================================================================== */
+/*
+ * Remove margin from the last-child
+ */
+.uk-form > :last-child {
+    margin-bottom: 0;
+}
+/*
+ * Controls
+ * Except for `range`, `radio`, `checkbox`, `file`, `submit`, `reset`, `button` and `image`
+ * 1. Must be `height` because `min-height` is not working in OSX
+ * 2. Responsiveness: Sets a maximum width relative to the parent to scale on narrower viewports
+ * 3. Vertical `padding` needed for `select` elements in Firefox
+ * 4. Style
+ */
+.uk-form select,
+.uk-form textarea,
+.uk-form input:not([type]),
+.uk-form input[type="text"],
+.uk-form input[type="password"],
+.uk-form input[type="datetime"],
+.uk-form input[type="datetime-local"],
+.uk-form input[type="date"],
+.uk-form input[type="month"],
+.uk-form input[type="time"],
+.uk-form input[type="week"],
+.uk-form input[type="number"],
+.uk-form input[type="email"],
+.uk-form input[type="url"],
+.uk-form input[type="search"],
+.uk-form input[type="tel"],
+.uk-form input[type="color"] {
+    /* 1 */
+    height: 30px;
+    /* 2 */
+    max-width: 100%;
+    /* 3 */
+    padding: 4px 6px;
+    /* 4 */
+    border: 1px solid #ddd;
+    background: #fff;
+    color: #444;
+    -webkit-transition: all 0.2s linear;
+    -webkit-transition-property: border, background, color, box-shadow, padding;
+    transition: all 0.2s linear;
+    transition-property: border, background, color, box-shadow, padding;
+}
+.uk-form select:focus,
+.uk-form textarea:focus,
+.uk-form input:not([type]):focus,
+.uk-form input[type="text"]:focus,
+.uk-form input[type="password"]:focus,
+.uk-form input[type="datetime"]:focus,
+.uk-form input[type="datetime-local"]:focus,
+.uk-form input[type="date"]:focus,
+.uk-form input[type="month"]:focus,
+.uk-form input[type="time"]:focus,
+.uk-form input[type="week"]:focus,
+.uk-form input[type="number"]:focus,
+.uk-form input[type="email"]:focus,
+.uk-form input[type="url"]:focus,
+.uk-form input[type="search"]:focus,
+.uk-form input[type="tel"]:focus,
+.uk-form input[type="color"]:focus {
+    border-color: #99baca;
+    outline: 0;
+    background: #f5fbfe;
+    color: #444;
+}
+.uk-form select:disabled,
+.uk-form textarea:disabled,
+.uk-form input:not([type]):disabled,
+.uk-form input[type="text"]:disabled,
+.uk-form input[type="password"]:disabled,
+.uk-form input[type="datetime"]:disabled,
+.uk-form input[type="datetime-local"]:disabled,
+.uk-form input[type="date"]:disabled,
+.uk-form input[type="month"]:disabled,
+.uk-form input[type="time"]:disabled,
+.uk-form input[type="week"]:disabled,
+.uk-form input[type="number"]:disabled,
+.uk-form input[type="email"]:disabled,
+.uk-form input[type="url"]:disabled,
+.uk-form input[type="search"]:disabled,
+.uk-form input[type="tel"]:disabled,
+.uk-form input[type="color"]:disabled {
+    border-color: #ddd;
+    background-color: #f5f5f5;
+    color: #999;
+}
+/*
+ * Placeholder
+ */
+.uk-form :-ms-input-placeholder {
+    color: #999 !important;
+}
+.uk-form ::-moz-placeholder {
+    color: #999;
+}
+.uk-form ::-webkit-input-placeholder {
+    color: #999;
+}
+.uk-form :disabled:-ms-input-placeholder {
+    color: #999 !important;
+}
+.uk-form :disabled::-moz-placeholder {
+    color: #999;
+}
+.uk-form :disabled::-webkit-input-placeholder {
+    color: #999;
+}
+/*
+ * Legend
+ * 1. Behave like block element
+ * 2. Correct `color` not being inherited in IE 8/9/10/11.
+ * 3. Remove padding
+ * 4. `margin-bottom` is not working in Safari and Opera.
+ *    Using `padding` and :after instead to create the border
+ * 5. Style
+ */
+.uk-form legend {
+    /* 1 */
+    width: 100%;
+    /* 2 */
+    border: 0;
+    /* 3 */
+    padding: 0;
+    /* 4 */
+    padding-bottom: 15px;
+    /* 5 */
+    font-size: 18px;
+    line-height: 30px;
+}
+/*
+ * 1. Fixes IE9
+ */
+.uk-form legend:after {
+    content: "";
+    display: block;
+    border-bottom: 1px solid #ddd;
+    /* 1 */
+    width: 100%;
+}
+/* Size modifiers
+ * Higher specificity needed to override defaults
+ ========================================================================== */
+select.uk-form-small,
+textarea.uk-form-small,
+input[type].uk-form-small,
+input:not([type]).uk-form-small {
+    height: 25px;
+    padding: 3px 3px;
+    font-size: 12px;
+}
+select.uk-form-large,
+textarea.uk-form-large,
+input[type].uk-form-large,
+input:not([type]).uk-form-large {
+    height: 40px;
+    padding: 8px 6px;
+    font-size: 16px;
+}
+/* Reset height
+ * Must be after size modifiers
+ ========================================================================== */
+.uk-form textarea,
+.uk-form select[multiple],
+.uk-form select[size] {
+    height: auto;
+}
+/* Validation states
+ * Using !important to keep the selector simple
+ ========================================================================== */
+/*
+ * Error state
+ */
+.uk-form-danger {
+    border-color: #dc8d99 !important;
+    background: #fff7f8 !important;
+    color: #d85030 !important;
+}
+/*
+ * Success state
+ */
+.uk-form-success {
+    border-color: #8ec73b !important;
+    background: #fafff2 !important;
+    color: #659f13 !important;
+}
+/* Style modifiers
+ * Using !important to keep the selector simple
+ ========================================================================== */
+/*
+ * Blank form
+ */
+.uk-form-blank {
+    border-color: transparent !important;
+    border-style: dashed !important;
+    background: none !important;
+}
+.uk-form-blank:focus {
+    border-color: #ddd !important;
+}
+/* Size sub-modifiers
+ ========================================================================== */
+/*
+ * Fixed widths
+ * Different widths for mini sized `input` and `select` elements
+ */
+input.uk-form-width-mini {
+    width: 40px;
+}
+select.uk-form-width-mini {
+    width: 65px;
+}
+.uk-form-width-small {
+    width: 130px;
+}
+.uk-form-width-medium {
+    width: 200px;
+}
+.uk-form-width-large {
+    width: 500px;
+}
+/* Sub-objects: `uk-form-row`
+ * Groups labels and controls in rows
+ ========================================================================== */
+/*
+ * Micro clearfix
+ * Needed for `uk-form-horizontal` modifier
+ */
+.uk-form-row:before,
+.uk-form-row:after {
+    content: "";
+    display: table;
+}
+.uk-form-row:after {
+    clear: both;
+}
+/*
+ * Vertical gutter
+ */
+.uk-form-row + .uk-form-row {
+    margin-top: 15px;
+}
+/* Help text
+ * Sub-object: `uk-form-help-inline`, `uk-form-help-block`
+ ========================================================================== */
+.uk-form-help-inline {
+    display: inline-block;
+    margin: 0 0 0 10px;
+}
+.uk-form-help-block {
+    margin: 5px 0 0 0;
+}
+/* Controls content
+ * Sub-object: `uk-form-controls`, `uk-form-controls-condensed`
+ ========================================================================== */
+/*
+ * Remove margins
+ */
+.uk-form-controls > :first-child {
+    margin-top: 0;
+}
+.uk-form-controls > :last-child {
+    margin-bottom: 0;
+}
+/*
+ * Group controls and text into blocks with a small spacing between blocks
+ */
+.uk-form-controls-condensed {
+    margin: 5px 0;
+}
+/* Modifier: `uk-form-stacked`
+ * Requires sub-object: `uk-form-label`
+ ========================================================================== */
+.uk-form-stacked .uk-form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+/* Modifier: `uk-form-horizontal`
+ * Requires sub-objects: `uk-form-label`, `uk-form-controls`
+ ========================================================================== */
+/* Tablet portrait and smaller */
+@media (max-width: 959px) {
+    /* Behave like `uk-form-stacked` */
+    .uk-form-horizontal .uk-form-label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+}
+/* Desktop and bigger */
+@media (min-width: 960px) {
+    .uk-form-horizontal .uk-form-label {
+        width: 200px;
+        margin-top: 5px;
+        float: left;
+    }
+    .uk-form-horizontal .uk-form-controls {
+        margin-left: 215px;
+    }
+    /* Better vertical alignment if controls are checkboxes and radio buttons with text */
+    .uk-form-horizontal .uk-form-controls-text {
+        padding-top: 5px;
+    }
+}
+/* Sub-object: `uk-form-icon`
+ ========================================================================== */
+/*
+ * 1. Container width fits its content
+ * 2. Create position context
+ * 3. Prevent `inline-block` consequences
+ */
+.uk-form-icon {
+    /* 1 */
+    display: inline-block;
+    /* 2 */
+    position: relative;
+    /* 3 */
+    max-width: 100%;
+}
+/*
+ * 1. Make form element clickable through icon
+ */
+.uk-form-icon > [class*='uk-icon-'] {
+    position: absolute;
+    top: 50%;
+    width: 30px;
+    margin-top: -7px;
+    font-size: 14px;
+    color: #999;
+    text-align: center;
+    /* 1 */
+    pointer-events: none;
+}
+.uk-form-icon:not(.uk-form-icon-flip) > input {
+    padding-left: 30px !important;
+}
+/*
+ * Sub-modifier: `uk-form-icon-flip`
+ */
+.uk-form-icon-flip > [class*='uk-icon-'] {
+    right: 0;
+}
+.uk-form-icon-flip > input {
+    padding-right: 30px !important;
+}
+
+.paginate_button {
+    cursor: pointer;
+}
